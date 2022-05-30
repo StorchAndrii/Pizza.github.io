@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "../../acces/logo/storchPizzaLogo.jpg";
+import logo from "../../assets/img/storchPizzaLogo.jpg";
 
 const Header = () => {
   return (
@@ -16,7 +16,7 @@ const Header = () => {
         <div className="header__cart">
           <a href="/cart.html" className="button button--cart">
             <span>300 ₴</span>
-            <div className="button__delimiter"></div>
+            <div className="button__delimiter" />
             <svg
               width="18"
               height="18"
