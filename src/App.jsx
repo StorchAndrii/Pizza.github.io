@@ -3,9 +3,18 @@ import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
 import Sort from "./components/Sort/Sort";
 import PizzaBlock from "./components/PizzaBlock/PizzaBlock";
-import pizzas from "./assets/pizzas.json";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getPizza } from "./pizzaSlice/pizzaSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPizza());
+  }, [dispatch]);
+
+  const pizzas = useSelector((state) => state.pizzaSlice.pizzas);
+
   return (
     <div className="wrapper">
       <Header />
