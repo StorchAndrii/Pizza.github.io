@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import logo from "../../assets/img/storchPizzaLogo.jpg";
 
@@ -14,7 +15,7 @@ const Header = () => {
           </div>
         </div>
         <div className="header__cart">
-          <a href="/cart.html" className="button button--cart">
+          <NavLink to={"/cart"} className="button button--cart">
             <span>300 ₴</span>
             <div className="button__delimiter" />
             <svg
@@ -47,7 +48,7 @@ const Header = () => {
               />
             </svg>
             <span>3</span>
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
