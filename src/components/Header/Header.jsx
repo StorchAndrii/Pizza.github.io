@@ -7,13 +7,13 @@ const Header = () => {
   return (
     <div className="header">
       <div className="container">
-        <div className="header__logo">
+        <NavLink to={"/"} className="header__logo">
           <img width="100" src={logo} alt="Pizzalogo" />
           <div>
             <h1>Storch Pizza</h1>
             <p>самая вкусная пицца во вселенной</p>
           </div>
-        </div>
+        </NavLink>
         <div className="header__cart">
           <NavLink to={"/cart"} className="button button--cart">
             <span>300 ₴</span>

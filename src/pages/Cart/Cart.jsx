@@ -1,10 +1,9 @@
 import React from "react";
-import Header from "../../components/Header/Header";
 
 const Cart = () => {
   return (
     <div>
-      <Header />Я КОРЗИНА!!!
+      <h1>Я Корзина!</h1>
     </div>
   );
 };
