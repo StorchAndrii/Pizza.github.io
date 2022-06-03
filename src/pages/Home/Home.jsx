@@ -13,7 +13,7 @@ const Home = () => {
   const isLoading = useSelector((state) => state.pizzaSlice.isLoading);
 
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
@@ -24,7 +24,7 @@ const Home = () => {
           ? [...new Array(12)].map((_, index) => <PizzaSkeleton key={index} />)
           : pizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
       </div>
-    </>
+    </div>
   );
 };
 
