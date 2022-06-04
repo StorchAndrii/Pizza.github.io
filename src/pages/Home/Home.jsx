@@ -9,7 +9,6 @@ import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 
 const Home = () => {
   const pizzas = useSelector((state) => state.pizzaSlice.pizzas);
-
   const isLoading = useSelector((state) => state.pizzaSlice.isLoading);
 
   return (

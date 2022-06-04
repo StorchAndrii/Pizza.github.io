@@ -5,6 +5,7 @@ const PizzaBlock = ({ imageUrl, types, sizes, title, price }) => {
   const [pizzaCount, setPizzaCount] = useState(0);
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
+
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">

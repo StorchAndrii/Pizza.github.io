@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getPizza } from "../../pizzaSlice/pizzaSlice";
 
 const Categories = () => {
+  const dispatch = useDispatch();
+
   const categories = [
     "Все",
     "Мясные",
@@ -10,6 +14,7 @@ const Categories = () => {
     "Закрытые",
   ];
   const [active, setActive] = useState(0);
+
   return (
     <div className="categories">
       <ul>
@@ -19,6 +24,7 @@ const Categories = () => {
             className={active === index ? "active" : ""}
             onClick={() => {
               setActive(index);
+              dispatch(getPizza(index));
             }}
           >
             {categories}

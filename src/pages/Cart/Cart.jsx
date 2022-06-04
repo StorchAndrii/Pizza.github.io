@@ -158,11 +158,9 @@ const Cart = () => {
         <div className="cart__bottom">
           <div className="cart__bottom-details">
             <span>
-              {" "}
               Всего пицц: <b>2 шт.</b>{" "}
             </span>
             <span>
-              {" "}
               Сумма заказа: <b>1160 ₴</b>{" "}
             </span>
           </div>

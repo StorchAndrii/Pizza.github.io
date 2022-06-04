@@ -1,18 +1,21 @@
-import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import "./scss/app.scss";
-import { getPizza } from "./pizzaSlice/pizzaSlice";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
-import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
 
+import { getPizza } from "./pizzaSlice/pizzaSlice";
+
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getPizza());
+    window.scroll(0, 0);
   }, [dispatch]);
 
   return (

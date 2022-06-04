@@ -4,13 +4,26 @@ import baseService from "../axios/baseService";
 const initialState = {
   pizzas: [],
   isLoading: true,
+  sortBy: "",
+  order: "",
+  category: "",
 };
 
-export const getPizza = createAsyncThunk("pizzaSlice/getPizza", async () => {
-  const { data } = await baseService.get("/items");
+export const getPizza = createAsyncThunk(
+  "pizzaSlice/getPizza",
+  async (category) => {
+    console.log(category);
+    const { data } = await baseService.get("/items", {
+      params: {
+        sortBy: "",
+        order: "",
+        category: category,
+      },
+    });
 
-  return data;
-});
+    return data;
+  }
+);
 
 export const pizzaSlice = createSlice({
   name: "pizzaSlice",
@@ -21,6 +34,7 @@ export const pizzaSlice = createSlice({
     builder.addCase(getPizza.fulfilled, (state, { payload }) => {
       state.pizzas = payload;
       state.isLoading = false;
+      state.category = "";
     });
   },
 });
