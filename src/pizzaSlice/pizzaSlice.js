@@ -4,20 +4,26 @@ import baseService from "../axios/baseService";
 const initialState = {
   pizzas: [],
   isLoading: true,
-  sortBy: "",
-  order: "",
-  category: "",
+  searchParams: {
+    sortBy: "title",
+    order: "",
+    category: "",
+  },
 };
-
 export const getPizza = createAsyncThunk(
   "pizzaSlice/getPizza",
-  async (category) => {
-    console.log(category);
+  async (params, { getState }) => {
+    const {
+      pizzaSlice: {
+        searchParams: { sortBy, order, category },
+      },
+    } = getState();
     const { data } = await baseService.get("/items", {
       params: {
-        sortBy: "",
-        order: "",
-        category: category,
+        sortBy,
+        order,
+        category,
+        ...params,
       },
     });
 
@@ -31,10 +37,15 @@ export const pizzaSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
+    builder.addCase(getPizza.pending, (state, { meta }) => {
+      state.isLoading = true;
+      state.searchParams = { ...state.searchParams, ...meta.arg };
+    });
+
     builder.addCase(getPizza.fulfilled, (state, { payload }) => {
+      state.isLoading = true;
       state.pizzas = payload;
       state.isLoading = false;
-      state.category = "";
     });
   },
 });

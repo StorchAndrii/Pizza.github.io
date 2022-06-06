@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import logo from "../../assets/img/storchPizzaLogo.jpg";
+import Search from "../Search/Search";
 
 const Header = () => {
   return (
@@ -14,6 +15,7 @@ const Header = () => {
             <p>самая вкусная пицца во вселенной</p>
           </div>
         </NavLink>
+        <Search />
         <div className="header__cart">
           <NavLink to={"/cart"} className="button button--cart">
             <span>300 ₴</span>

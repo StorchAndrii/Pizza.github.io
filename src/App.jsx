@@ -12,7 +12,6 @@ import { getPizza } from "./pizzaSlice/pizzaSlice";
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getPizza());
     window.scroll(0, 0);

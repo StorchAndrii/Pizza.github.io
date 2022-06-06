@@ -1,10 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPizza } from "../../pizzaSlice/pizzaSlice";
+
+const sortProperties = [
+  { name: "популярности", sortProperty: "rating" },
+  { name: "цене", sortProperty: "price" },
+  { name: "алфавиту", sortProperty: "title" },
+];
 
 const Sort = () => {
-  const sort = ["популярности", "цене", "алфавиту"];
+  const dispatch = useDispatch();
+
+  const currentSortBy = useSelector((state) =>
+    sortProperties.find(
+      (property) =>
+        property.sortProperty === state.pizzaSlice.searchParams.sortBy
+    )
+  );
+
   const [open, setOpen] = useState(false);
-  const [sortActive, setSortActive] = useState(0);
-  const sortName = sort[sortActive];
 
   return (
     <div className="sort">
@@ -27,22 +41,27 @@ const Sort = () => {
             setOpen(!open);
           }}
         >
-          {sortName}
+          {currentSortBy.name}
         </span>
       </div>
       {open && (
         <div className="sort__popup">
           <ul>
-            {sort.map((sort, i) => (
+            {sortProperties.map((obj, i) => (
               <li
                 key={i}
                 onClick={() => {
-                  setSortActive(i);
+                  // setSortActive(i);
                   setOpen(false);
+                  dispatch(getPizza({ sortBy: obj.sortProperty }));
                 }}
-                className={sortActive === i ? "active" : ""}
+                className={
+                  currentSortBy.sortProperty === obj.sortProperty
+                    ? "active"
+                    : ""
+                }
               >
-                {sort}
+                {obj.name}
               </li>
             ))}
           </ul>

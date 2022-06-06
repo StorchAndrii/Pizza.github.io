@@ -1,33 +1,35 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getPizza } from "../../pizzaSlice/pizzaSlice";
+
+const categories = [
+  "Все",
+  "Мясные",
+  "Вегетарианская",
+  "Гриль",
+  "Острые",
+  "Закрытые",
+];
 
 const Categories = () => {
   const dispatch = useDispatch();
 
-  const categories = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
-  const [active, setActive] = useState(0);
+  const currentCategory = useSelector(
+    (state) => state.pizzaSlice.searchParams.category
+  );
 
   return (
     <div className="categories">
       <ul>
-        {categories.map((categories, index) => (
+        {categories.map((category, index) => (
           <li
             key={index}
-            className={active === index ? "active" : ""}
+            className={currentCategory === index ? "active" : ""}
             onClick={() => {
-              setActive(index);
-              dispatch(getPizza(index));
+              dispatch(getPizza({ category: index ? index : "" }));
             }}
           >
-            {categories}
+            {category}
           </li>
         ))}
       </ul>
