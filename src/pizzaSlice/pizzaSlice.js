@@ -6,6 +6,7 @@ const initialState = {
   isLoading: true,
   searchParams: {
     sortBy: "title",
+    search: "",
     order: "",
     category: "",
   },
@@ -15,14 +16,16 @@ export const getPizza = createAsyncThunk(
   async (params, { getState }) => {
     const {
       pizzaSlice: {
-        searchParams: { sortBy, order, category },
+        searchParams: { sortBy, search, order, category },
       },
     } = getState();
     const { data } = await baseService.get("/items", {
       params: {
         sortBy,
+        search,
         order,
         category,
+
         ...params,
       },
     });
@@ -34,7 +37,11 @@ export const getPizza = createAsyncThunk(
 export const pizzaSlice = createSlice({
   name: "pizzaSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    // setSearchValue(state, action) {
+    //   state.searchValue = action.payload;
+    // },
+  },
 
   extraReducers: (builder) => {
     builder.addCase(getPizza.pending, (state, { meta }) => {
@@ -50,6 +57,6 @@ export const pizzaSlice = createSlice({
   },
 });
 // Action creators are generated for each case reducer function
-// export const {} = pizzaSlice.actions;
+// export const { setSearchValue } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;
