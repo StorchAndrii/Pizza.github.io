@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "./scss/app.scss";
 import Cart from "./pages/Cart/Cart";
@@ -11,15 +11,11 @@ import Header from "./components/Header/Header";
 import { getPizza } from "./pizzaSlice/pizzaSlice";
 
 function App() {
-  const searchInputValue = useSelector(
-    (state) => state.pizzaSlice.searchParams.search
-  );
-
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPizza(searchInputValue));
+    dispatch(getPizza());
     window.scroll(0, 0);
-  }, [dispatch, searchInputValue]);
+  }, [dispatch]);
 
   return (
     <div className="wrapper">

@@ -7,8 +7,8 @@ const initialState = {
   searchParams: {
     sortBy: "title",
     search: "",
-    order: "",
-    category: "",
+    order: null,
+    category: null,
   },
 };
 export const getPizza = createAsyncThunk(
