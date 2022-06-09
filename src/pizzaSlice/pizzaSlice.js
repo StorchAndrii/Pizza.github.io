@@ -5,6 +5,8 @@ const initialState = {
   pizzas: [],
   isLoading: true,
   searchParams: {
+    page: 1,
+    limit: 4,
     sortBy: "title",
     search: "",
     order: null,
@@ -16,11 +18,13 @@ export const getPizza = createAsyncThunk(
   async (params, { getState }) => {
     const {
       pizzaSlice: {
-        searchParams: { sortBy, search, order, category },
+        searchParams: { page, limit, sortBy, search, order, category },
       },
     } = getState();
-    const { data } = await baseService.get("/items", {
+    const { data } = await baseService.get("/items?", {
       params: {
+        page,
+        limit,
         sortBy,
         search,
         order,

@@ -1,18 +1,24 @@
 import React from "react";
 import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
 import styles from "./Pagination.module.scss";
+import { useDispatch } from "react-redux";
+import { getPizza } from "../../pizzaSlice/pizzaSlice";
 
 const Pagination = () => {
-  console.log(styles);
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.root}>
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
-        onPageChange={(e) => console.log(e)}
+        onPageChange={(event) =>
+          dispatch(getPizza({ page: event.selected + 1 }))
+        }
         pageRangeDisplayed={5}
         pageCount={3}
-        previousLabel="< previous"
+        previousLabel="
+			< previous"
         renderOnZeroPageCount={null}
       />
     </div>
