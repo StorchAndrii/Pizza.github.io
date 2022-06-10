@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPizza } from "../../pizzaSlice/pizzaSlice";
 
@@ -10,6 +10,8 @@ const sortProperties = [
 
 const Sort = () => {
   const dispatch = useDispatch();
+  const sortRef = useRef();
+  const [open, setOpen] = useState(false);
 
   const currentSortBy = useSelector((state) =>
     sortProperties.find(
@@ -18,10 +20,18 @@ const Sort = () => {
     )
   );
 
-  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.path.includes(sortRef.current)) {
+        setOpen(false);
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => document.body.removeEventListener("click", handleClickOutside);
+  }, []);
 
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"

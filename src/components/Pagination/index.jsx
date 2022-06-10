@@ -12,13 +12,13 @@ const Pagination = () => {
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
+        previousLabel="
+			< previous"
         onPageChange={(event) =>
           dispatch(getPizza({ page: event.selected + 1 }))
         }
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={4}
         pageCount={3}
-        previousLabel="
-			< previous"
         renderOnZeroPageCount={null}
       />
     </div>
