@@ -3,7 +3,7 @@ import search from "../../assets/img/search.svg";
 import clear from "../../assets/img/clear.svg";
 import styles from "./Search.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getPizza } from "../../pizzaSlice/pizzaSlice";
+import { getPizza } from "../../redux/pizzaSlice/pizzaSlice";
 
 const Search = () => {
   const dispatch = useDispatch();

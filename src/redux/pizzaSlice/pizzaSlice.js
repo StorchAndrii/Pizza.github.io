@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import baseService from "../axios/baseService";
+import baseService from "../../axios/baseService";
 
 const initialState = {
   pizzas: [],
@@ -41,11 +41,7 @@ export const getPizza = createAsyncThunk(
 export const pizzaSlice = createSlice({
   name: "pizzaSlice",
   initialState,
-  reducers: {
-    // setSearchValue(state, action) {
-    //   state.searchValue = action.payload;
-    // },
-  },
+  reducers: {},
 
   extraReducers: (builder) => {
     builder.addCase(getPizza.pending, (state, { meta }) => {

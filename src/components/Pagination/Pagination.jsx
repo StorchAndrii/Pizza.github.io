@@ -2,7 +2,7 @@ import React from "react";
 import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
 import styles from "./Pagination.module.scss";
 import { useDispatch } from "react-redux";
-import { getPizza } from "../../pizzaSlice/pizzaSlice";
+import { getPizza } from "../../redux/pizzaSlice/pizzaSlice";
 
 const Pagination = () => {
   const dispatch = useDispatch();

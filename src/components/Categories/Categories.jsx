@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPizza } from "../../pizzaSlice/pizzaSlice";
+import { getPizza } from "../../redux/pizzaSlice/pizzaSlice";
 
-const categories = [
+export const categories = [
   "Все",
   "Мясные",
   "Вегетарианская",

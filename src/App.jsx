@@ -7,8 +7,7 @@ import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
-
-import { getPizza } from "./pizzaSlice/pizzaSlice";
+import { getPizza } from "./redux/pizzaSlice/pizzaSlice";
 
 function App() {
   const dispatch = useDispatch();
