@@ -11,8 +11,7 @@ import Pagination from "../../components/Pagination/Pagination";
 const Home = () => {
   const items = useSelector((state) => state.pizzaSlice.pizzas);
   const isLoading = useSelector((state) => state.pizzaSlice.isLoading);
-
-  const currentCategory = useSelector(
+  const category = useSelector(
     (state) => state.pizzaSlice.searchParams.category
   );
 
@@ -28,7 +27,7 @@ const Home = () => {
         <Sort />
       </div>
       <h2 className="content__title">
-        {currentCategory ? categories[currentCategory] : "Все"} пиццы
+        {category ? categories[category] : "Все"} пиццы
       </h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
       <Pagination />

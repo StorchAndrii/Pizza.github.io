@@ -52,7 +52,6 @@ const Sort = () => {
               <li
                 key={i}
                 onClick={() => {
-                  // setSortActive(i);
                   setOpen(false);
                   dispatch(getPizza({ sortBy: obj.sortProperty }));
                 }}

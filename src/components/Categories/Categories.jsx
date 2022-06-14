@@ -17,6 +17,7 @@ const Categories = () => {
   const currentCategory = useSelector(
     (state) => state.pizzaSlice.searchParams.category
   );
+  const activeCategory = currentCategory ? currentCategory : 0;
 
   return (
     <div className="categories">
@@ -24,7 +25,7 @@ const Categories = () => {
         {categories.map((category, index) => (
           <li
             key={index}
-            className={currentCategory === index ? "active" : ""}
+            className={activeCategory === index ? "active" : ""}
             onClick={() => {
               dispatch(getPizza({ category: index ? index : "" }));
             }}
