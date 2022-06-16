@@ -16,8 +16,6 @@ const PizzaBlock = ({ id, imageUrl, types, sizes, title, price }) => {
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-  console.log(activeSize);
-
   const onClickAdd = () => {
     const item = {
       id,
@@ -26,7 +24,7 @@ const PizzaBlock = ({ id, imageUrl, types, sizes, title, price }) => {
       types,
       price,
       type: typeName[activeType],
-      size: activeSize,
+      sizes: sizes[activeSize],
     };
     dispatch(addItems(item));
   };

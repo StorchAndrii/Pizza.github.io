@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../../components/CartItem/CartItem";
 import { clearItems } from "../../redux/cartSlice/cartSlice";
+import EmptyCart from "../../components/EmptyCart/EmptyCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,10 @@ const Cart = () => {
       dispatch(clearItems());
     }
   };
+
+  if (!totalPrice) {
+    return <EmptyCart />;
+  }
 
   return (
     <div className="container container--cart">

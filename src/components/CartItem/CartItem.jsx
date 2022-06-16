@@ -32,7 +32,7 @@ const CartItem = ({ id, imageUrl, type, sizes, title, price, count }) => {
       <div className="cart__item-info">
         <h3>{title}</h3>
         <p>
-          {type}, {sizes}30 см.
+          {type}, {sizes} см.
         </p>
       </div>
       <div className="cart__item-count">
