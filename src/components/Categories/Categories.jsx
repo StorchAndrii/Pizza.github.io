@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPizza } from "../../redux/pizzaSlice/pizzaSlice";
+import { getPizza, selectorSearch } from "../../redux/pizzaSlice/pizzaSlice";
 
 export const categories = [
   "Все",
@@ -14,10 +14,8 @@ export const categories = [
 const Categories = () => {
   const dispatch = useDispatch();
 
-  const currentCategory = useSelector(
-    (state) => state.pizzaSlice.searchParams.category
-  );
-  const activeCategory = currentCategory ? currentCategory : 0;
+  const { category } = useSelector(selectorSearch);
+  const activeCategory = category ? category : 0;
 
   return (
     <div className="categories">

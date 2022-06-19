@@ -8,17 +8,20 @@ import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 import Sort from "../../components/Sort/Sort";
 import Pagination from "../../components/Pagination/Pagination";
 import NotFoundBlock from "../../components/NotFoundBlock/ NotFoundBlock";
+import {
+  selectorPizzas,
+  selectorSearch,
+} from "../../redux/pizzaSlice/pizzaSlice";
 
 const Home = () => {
-  const items = useSelector((state) => state.pizzaSlice.pizzas);
-  const status = useSelector((state) => state.pizzaSlice.status);
-  const category = useSelector(
-    (state) => state.pizzaSlice.searchParams.category
-  );
-  const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+  const { itemsPizza, status } = useSelector(selectorPizzas);
+  const { category } = useSelector(selectorSearch);
+
+  const pizzas = itemsPizza.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
   const skeletons = [...new Array(4)].map((_, index) => (
     <PizzaSkeleton key={index} />
   ));
+  console.log(status);
 
   return (
     <div className="container">

@@ -5,9 +5,10 @@ import logo from "../../assets/img/storchPizzaLogo.jpg";
 import Search from "../Search/Search";
 import bagCart from "../../assets/img/bagCart.svg";
 import { useSelector } from "react-redux";
+import { selectorCart } from "../../redux/cartSlice/cartSlice";
 
 const Header = () => {
-  const { items, totalPrice } = useSelector((state) => state.cartSlice);
+  const { items, totalPrice } = useSelector(selectorCart);
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 

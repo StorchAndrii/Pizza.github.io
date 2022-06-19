@@ -2,17 +2,16 @@ import React, { useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import debounce from "lodash.debounce";
 
-import search from "../../assets/img/search.svg";
+import searchImg from "../../assets/img/search.svg";
 import clear from "../../assets/img/clear.svg";
 import styles from "./Search.module.scss";
-import { getPizza } from "../../redux/pizzaSlice/pizzaSlice";
+import { getPizza, selectorSearch } from "../../redux/pizzaSlice/pizzaSlice";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const searchInputValue = useSelector(
-    (state) => state.pizzaSlice.searchParams.search
-  );
+  const { search } = useSelector(selectorSearch);
   const [value, setValue] = useState("");
+  const inputRef = useRef();
 
   const updateSearchValue = useCallback(
     debounce((str) => {
@@ -21,7 +20,6 @@ const Search = () => {
     []
   );
 
-  const inputRef = useRef();
   const onClickClear = () => {
     dispatch(getPizza({ search: "" }));
     setValue("");
@@ -35,7 +33,7 @@ const Search = () => {
 
   return (
     <div className={styles.root}>
-      <img className={styles.icon} src={search} alt="search" />
+      <img className={styles.icon} src={searchImg} alt="search" />
       <input
         className={styles.input}
         ref={inputRef}
@@ -43,7 +41,7 @@ const Search = () => {
         value={value}
         onChange={onChangeInput}
       />
-      {searchInputValue && (
+      {search && (
         <img
           onClick={() => onClickClear()}
           className={styles.clear}
