@@ -3,7 +3,7 @@ import baseService from "../../axios/baseService";
 
 const initialState = {
   pizzas: [],
-  isLoading: true,
+  status: "loading",
   searchParams: {
     page: 1,
     limit: 4,
@@ -45,18 +45,21 @@ export const pizzaSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(getPizza.pending, (state, { meta }) => {
-      state.isLoading = true;
+      state.pizzas = [];
       state.searchParams = { ...state.searchParams, ...meta.arg };
+      state.status = "loading";
     });
-
     builder.addCase(getPizza.fulfilled, (state, { payload }) => {
-      state.isLoading = true;
       state.pizzas = payload;
-      state.isLoading = false;
+      state.status = "success";
+    });
+    builder.addCase(getPizza.rejected, (state) => {
+      state.status = "error";
+      state.pizzas = [];
     });
   },
 });
 // Action creators are generated for each case reducer function
-// export const { setSearchValue } = pizzaSlice.actions;
+// export const {  } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

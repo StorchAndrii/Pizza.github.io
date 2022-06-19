@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import CartItem from "../../components/CartItem/CartItem";
 import { clearItems } from "../../redux/cartSlice/cartSlice";
 import EmptyCart from "../../components/EmptyCart/EmptyCart";

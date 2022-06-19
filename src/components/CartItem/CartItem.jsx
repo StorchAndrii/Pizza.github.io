@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+
 import {
   addItems,
   minusItem,
@@ -12,11 +13,9 @@ const CartItem = ({ id, imageUrl, type, sizes, title, price, count }) => {
   const onClickPlus = () => {
     dispatch(addItems({ id }));
   };
+
   const onClickMinus = () => {
     dispatch(minusItem(id));
-    if (minusItem.length === 0) {
-      dispatch(removeItems(id));
-    }
   };
   const onClickRemoveItems = () => {
     if (window.confirm("Are you sure you want to remove?")) {
